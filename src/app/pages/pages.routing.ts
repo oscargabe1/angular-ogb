@@ -7,6 +7,7 @@ const routes: Routes = [
     {
         path: 'dashboard', component: PagesComponent,
         children: [
+            {path: '', component: FirstComponent},
             { path:'first', component: FirstComponent }
         ]
        
