@@ -6,13 +6,15 @@ import { RouterModule } from '@angular/router';
 import { FirstComponent } from "./first/first.component";
 import { PagesComponent } from './pages.component';
 import { SharedModule } from '../shared/shared.module';
+import { PipesComponent } from './pipes/pipes.component';
 
 
 
 @NgModule({
   declarations: [
     FirstComponent,
-    PagesComponent
+    PagesComponent,
+    PipesComponent
   ],
   exports:[
     FirstComponent,
