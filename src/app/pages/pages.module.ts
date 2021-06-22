@@ -8,6 +8,7 @@ import { PagesComponent } from './pages.component';
 import { SharedModule } from '../shared/shared.module';
 import { PipesComponent } from './pipes/pipes.component';
 import { PipesModule } from '../pipes/pipes.module';
+import { ComponentsModule } from '../components/components.module';
 
 
 
@@ -23,6 +24,7 @@ import { PipesModule } from '../pipes/pipes.module';
   ],
   imports: [
     CommonModule,
+    ComponentsModule,
     PipesModule,
     RouterModule,
     SharedModule,
