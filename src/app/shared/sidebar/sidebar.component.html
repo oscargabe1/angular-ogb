@@ -25,23 +25,15 @@
           
        
           <li class="nav-header">ANGULAR TOOLS</li>
-          <li class="nav-item" >
-            <a class="nav-link" routerLinkActive="active" [routerLink]="['pipes']">
-              <i class="nav-icon fab fa-pied-piper-alt"></i>
+          <li *ngFor='let tab of tabs' class="nav-item">
+            <a class="nav-link" routerLinkActive="active" [routerLink]="[tab.link]">
+              <i class="nav-icon {{tab.icon}}"></i>
               <p>
-                Pipes
+                {{tab.title}}
               </p>
             </a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" routerLinkActive="active" [routerLink]="['first']">
-              <i class="nav-icon fab fa-pied-piper-alt"></i>
-              <p>
-                First
-              </p>
-            </a>
-          </li>
-       
+         
         </ul>
       </nav>
       <!-- /.sidebar-menu -->

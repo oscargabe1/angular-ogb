@@ -9,6 +9,7 @@ import { SharedModule } from '../shared/shared.module';
 import { PipesComponent } from './pipes/pipes.component';
 import { PipesModule } from '../pipes/pipes.module';
 import { ComponentsModule } from '../components/components.module';
+import { FormsComponent } from './forms/forms.component';
 
 
 
@@ -17,6 +18,7 @@ import { ComponentsModule } from '../components/components.module';
     FirstComponent,
     PagesComponent,
     PipesComponent,
+    FormsComponent,
   ],
   exports:[
     FirstComponent,

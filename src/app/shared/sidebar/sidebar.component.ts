@@ -8,6 +8,19 @@ import { Router } from "@angular/router";
 })
 export class SidebarComponent implements OnInit {
 
+  tabs = [
+    {
+      title: 'Forms',
+      link: 'forms',
+      icon: 'far fa-check-square'
+    },
+    {
+      title: 'Pipes',
+      link: 'pipes',
+      icon: 'fab fa-pied-piper-alt'
+    }
+  ]
+
   constructor(private router:Router) { }
 
   ngOnInit() {
