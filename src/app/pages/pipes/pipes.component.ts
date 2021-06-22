@@ -7,6 +7,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PipesComponent implements OnInit {
 
+  jsonObj = {'name':'Oscar','last_name':'Gaytan'};
+  dateVal = new Date();
+
   constructor() { }
 
   ngOnInit() {

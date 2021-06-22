@@ -7,6 +7,7 @@ import { FirstComponent } from "./first/first.component";
 import { PagesComponent } from './pages.component';
 import { SharedModule } from '../shared/shared.module';
 import { PipesComponent } from './pipes/pipes.component';
+import { PipesModule } from '../pipes/pipes.module';
 
 
 
@@ -14,7 +15,7 @@ import { PipesComponent } from './pipes/pipes.component';
   declarations: [
     FirstComponent,
     PagesComponent,
-    PipesComponent
+    PipesComponent,
   ],
   exports:[
     FirstComponent,
@@ -22,8 +23,9 @@ import { PipesComponent } from './pipes/pipes.component';
   ],
   imports: [
     CommonModule,
+    PipesModule,
     RouterModule,
-    SharedModule
+    SharedModule,
   ]
 })
 export class PagesModule { }

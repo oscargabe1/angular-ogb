@@ -1,37 +1,139 @@
 <div class="content-wrapper">
 
-    <div class="content-header">
-        <div class="container-fluid">
-          <div class="row mb-2">
-            <div class="col-sm-6">
-              <h1 class="m-0">Pipes</h1>
-            </div>
-            <div class="col-sm-6">
-              <ol class="breadcrumb float-sm-right">
-                <li class="breadcrumb-item"><a [routerLink]="['/dashboard/first']">Home</a></li>
-                <li class="breadcrumb-item active">Pipes</li>
-              </ol>
-            </div>
-          </div>
+  <div class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+          <h1 class="m-0">Pipes</h1>
+        </div>
+        <div class="col-sm-6">
+          <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item"><a [routerLink]="['/dashboard/first']">Home</a></li>
+            <li class="breadcrumb-item active">Pipes</li>
+          </ol>
         </div>
       </div>
+    </div>
+  </div>
     
-    <section class="content">
-        <div class="container-fluid">
-            <h5 class="mt-4 mb-2">Commonly used pipes</h5>
-            <div class="row">
-                <div class="col-4">
-                    <div class="card">
-                        <div class="card-header">
-                            <h3 class="card-title">Currency</h3>
-                        </div>
-                        <div class="card-body">
-                            <p>Start</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+  <section class="content">
+    <div class="container-fluid">
+      <h5 class="mb-3">Built-In Pipes</h5>
+        <div class="row">
+
+          <div class="col-md-4 col-sm-12">
+            <app-content-card [title]="'Date Pipe'" [icon]="'fa fa-calendar'"
+                        [description]="'Used to transform a new Date() instance into different formats.'">
+              <ul>
+                <li ngNonBindable>{{dateVal | date}}</li>
+                <li>{{dateVal | date}}</li>
+                <hr>
+                <li ngNonBindable>{{dateVal | date:'short'}}</li>
+                <li>{{dateVal | date:'short'}}</li>
+              </ul>
+              <span>Documentation: <a href="https://angular.io/api/common/DatePipe" target="_blank">https://angular.io/api/common/DatePipe</a></span>
+            </app-content-card>
+          </div>
+
+          <div class="col-md-4 col-sm-12">
+            <app-content-card [title]="'Currency Pipe'" [icon]="'fas fa-dollar-sign'"
+                        [description]="'Used for currency formatting, the first argument is the abbreviation of the currency, the second (optional) is the way you want to display the currency.'">
+              <ul>
+                <li ngNonBindable>{{1234 | currency:'EUR'}}</li>
+                <li>{{1234 | currency:'EUR'}}</li>
+                <hr>
+                <li ngNonBindable>{{1234 | currency:'USD':'code'}}</li>
+                <li>{{1234 | currency:'USD':'code'}}</li>
+              </ul>
+            </app-content-card>
+          </div>
+          
+          <div class="col-md-4 col-sm-12">
+            <app-content-card [title]="'Decimal Pipe'" [icon]="'fa fa-ellipsis-h'"
+                        [description]="'Used to transform decimal numbers. The first argument is a format string of the form {minIntegerDigits}. {minFractionDigits}-{maxFractionDigits}'">
+              <ul>
+                <li ngNonBindable>{{ 3.14159265 | number: '3.1-2' }}</li>
+                <li>{{ 3.14159265 | number: '3.1-2' }}</li>
+                <hr>
+                <li ngNonBindable>{{ 3.14159265 | number: '1.4-4' }}</li> 
+                <li>{{ 3.14159265 | number: '1.4-4' }}</li>
+              </ul>
+            </app-content-card>
+          </div>
+          
+          <div class="col-md-4 col-sm-12">
+            <app-content-card [title]="'JSON Pipe'" [icon]="'fab fa-js'"
+                        [description]="'Transforms JSON object into a string.'">
+              <ul>
+                <li ngNonBindable>{{ jsonObj }}</li>
+                <li>{{ jsonObj }} <small>(no pipe)</small></li>
+                <hr>
+                <li ngNonBindable>{{ jsonObj | json }}</li>
+                <li>{{ jsonObj | json }}</li>
+              </ul>
+            </app-content-card>
+          </div>
+
+          <div class="col-md-4 col-sm-12">
+            <app-content-card [title]="'LowerCase Pipe'" [icon]="'fas fa-caret-down'"
+                        [description]="'Transforms string into all lowercase.'">
+              <ul>
+                <li ngNonBindable>{{ 'Hello World' | lowercase }}</li>
+                <li>{{ 'Hello World' | lowercase }}</li>
+              </ul>
+            </app-content-card>
+          </div>
+  
+          <div class="col-md-4 col-sm-12">
+            <app-content-card [title]="'UpperCase Pipe'" [icon]="'fas fa-caret-up'"
+                        [description]="'Transforms string into all uppercase.'">
+              <ul>
+                <li ngNonBindable>{{ 'Hello World' | upperrcase }}</li>
+                <li>{{ 'Hello World' | uppercase }}</li>
+              </ul>
+            </app-content-card>
+          </div>
 
         </div>
-    </section>
+        <span><a href="https://angular.io/api?type=pipe" taget="_blank">More Pipes</a></span>
+
+        <h5 class="mt-4 mb-3">Creating Custom Pipes</h5>
+        <div class="row">
+          <div class="col-md-6 col-sm-12">
+            <app-content-card [title]="'Instructions'" [icon]="'fa fa-list'"
+                          [description]="'A custom pipe can transform a value to whatever you want or need. To create one follow these instructions.'">
+                <ul>
+                  <li>Create a 'pipes' folder in your 'app' folder.</li>
+                  <li>In the folder add a pipes-module that's gonna have your custom pipe in declarations and in exports.</li>
+                  <li>Create your custom pipe, declare a name and instructions to transform your value, you can also add parameters.</li>
+                </ul>
+                <p>It should look look like this:</p>
+                <img class="overflow-hidden" src="https://i.imgur.com/isfix8g.png" alt="Imgur image">
+              </app-content-card>
+          </div>
+          
+          <div class="col-md-6 col-sm-12">
+            <app-content-card [title]="'Using the InvestmentReturn Custom Pipe'" [icon]="'fab fa-pied-piper-alt'"
+                          [description]="'This custom pipe takes an amount of money (number) and returns the amount that an investment of that money would be. It takes into account the annual rate, the number of days the money will be invested and the taxes. These parameters can be set when using the pipe.'">
+                <ul>
+                  <li ngNonBindable>{{100000 | investmentReturn}} <small>If parameters are not set, default ammounts will be used.</small></li>
+                  <li>{{100000 | investmentReturn}}</li>
+                  <hr>
+                  <li ngNonBindable>{{100000 | investmentReturn: '<strong>rate</strong>':'<strong>days</strong>':'<strong>taxes</strong>'}}</li> 
+                  <li ngNonBindable>{{100000 | investmentReturn: '7':'40':'2'}}</li>
+                  <li>{{100000 | investmentReturn: '7':'40':'2'}}</li>
+                </ul>
+              </app-content-card>
+          </div>
+
+        </div>
+
+
+
+        
+
+    </div>
+  </section>
+
+  
 </div>
