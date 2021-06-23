@@ -1,0 +1,8 @@
+<div class="user-container">
+    <p *ngIf="users.length == 0" class="text-muted">No users have been added.</p>
+    <div class="user-info" *ngFor="let user of users; let last = last;">
+        <h5>{{user.name}}</h5>
+        <p class="text-muted">{{user.email}}</p>
+        <hr *ngIf="!last">
+    </div>
+</div>

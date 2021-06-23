@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
+import { UserService } from "../../services/user.service";
+
 import Swal from 'sweetalert2'
 
 @Component({
@@ -11,6 +13,7 @@ import Swal from 'sweetalert2'
 export class FormsComponent implements OnInit {
 
   public reactiveForm = this.fb.group({
+    name:['',[Validators.required, Validators.minLength(3)]],
     email:['',[Validators.required, Validators.email]],
     password:['',[Validators.required, Validators.pattern("^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$")]],
     passwordConfirm:['',{validators: [Validators.required],updateOn: 'submit'}],
@@ -18,6 +21,9 @@ export class FormsComponent implements OnInit {
     validators: this.matchingPassword('password','passwordConfirm')
   })
 
+  get name(){
+    return this.reactiveForm.get('name');
+  }
   get email(){
     return this.reactiveForm.get('email');
   }
@@ -33,7 +39,7 @@ export class FormsComponent implements OnInit {
   showPassword:boolean = false;
   showPasswordConfirm:boolean = false;
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder, private userService:UserService) { }
 
   ngOnInit() {
   }
@@ -58,6 +64,7 @@ export class FormsComponent implements OnInit {
       confirmButtonText: "Yes, I'm sure!"
     }).then((result) => {
       if (result.isConfirmed) {
+        this.userService.addUser(this.reactiveForm.value);
         Swal.fire(
           'Done!',
           'Your information has been sent.',

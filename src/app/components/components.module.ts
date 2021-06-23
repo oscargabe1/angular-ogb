@@ -1,15 +1,18 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ContentCardComponent } from './content-card/content-card.component';
+import { UserListComponent } from './user-list/user-list.component';
 
 
 
 @NgModule({
   declarations: [
-    ContentCardComponent
+    ContentCardComponent,
+    UserListComponent
   ],
   exports:[
-    ContentCardComponent
+    ContentCardComponent,
+    UserListComponent
   ],
   imports: [
     CommonModule

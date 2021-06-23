@@ -21,73 +21,103 @@
 
         <h5 class="mb-3">Reactive Forms</h5>
 
-        <div class="col-md-6 col-sm-12">
-          <div class="card">
-            <div class="card-header">
-              <h3 class="card-title">
-                  <i *ngIf="icon" class="far fa-check-square mr-1"></i>
-                  Example Form
-              </h3>
-            </div>
-            <form method="post"
-                    autocomplete="off"
-                    [formGroup]="reactiveForm"
-                    (ngSubmit)="postForm()"
-                    (keydown.enter)="$event.preventDefault()">
-
-              <div class="card-body">
-
-                <div class="form-group">
-                  <label for="email">Email address</label>
-                  <input type="email" class="form-control" [class.is-invalid]="email.invalid && formSubmitted" id="email" placeholder="Enter email" formControlName="email">
-                  <div *ngIf="email.errors && email.hasError('required')" class="invalid-feedback">
-                    This field is required.
-                  </div>
-                  <div *ngIf="email.errors && email.hasError('email')" class="invalid-feedback">
-                    Please enter a valid email.
-                  </div>
-                  
-                </div>
-
-                <div class="form-group">
-                  <label for="email">Password</label>
-                  <input type="{{ showPassword ? 'text' : 'password'}}" class="form-control" [class.is-invalid]="password.invalid && formSubmitted" id="password" placeholder="Enter password" formControlName="password">
-                  <div *ngIf="password.errors && password.hasError('required')" class="invalid-feedback">
-                    This field is required.
-                  </div>
-                  <div *ngIf="password.errors && password.hasError('pattern')" class="invalid-feedback">
-                    Must contain at least one uppercase letter, one lowecase letter, one number and one special character.
-                  </div>
-                </div>
-
-                <div class="form-group">
-                  <label for="email">Confirm password</label>
-                  <input type="{{ showPassword ? 'text' : 'password' }}" class="form-control" [class.is-invalid]="passwordConfirm.invalid && formSubmitted" id="passwordConfirm" placeholder="Confirm password" formControlName="passwordConfirm">
-
-                  <div *ngIf="passwordConfirm.errors && passwordConfirm.hasError('required')" class="invalid-feedback">
-                    This field is required.
-                  </div>
-                  <div *ngIf="passwordConfirm.errors && passwordConfirm.hasError('notMatching')" class="invalid-feedback">
-                    Password not matching.
-                  </div>
-                </div>
-
-                <div class="form-check">
-                  <input class="form-check-input" type="checkbox" value="" id="showPasswordCheck" (change)="changeShowPassword()">
-                  <label class="form-check-label" for="showPasswordCheck">
-                    Show password
-                  </label>
-                </div>
-
-
+        <div class="row">
+          <div class="col-md-6 col-sm-12">
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">
+                    <i class="far fa-check-square mr-1"></i>
+                    Example Form
+                </h3>
+              </div>
+              <form method="post"
+                      autocomplete="off"
+                      [formGroup]="reactiveForm"
+                      (ngSubmit)="postForm()"
+                      (keydown.enter)="$event.preventDefault()">
   
-              </div>
+                <div class="card-body">
 
+                  <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" class="form-control" [class.is-invalid]="name.invalid && formSubmitted" id="name" placeholder="Enter name" formControlName="name" maxlength="30">
+                    <div *ngIf="name.errors && name.hasError('required')" class="invalid-feedback">
+                      This field is required.
+                    </div>
+                    <div *ngIf="name.errors && name.hasError('minlength')" class="invalid-feedback">
+                      Must be at least 3 characters long.
+                    </div>
+                  </div>
+  
+                  <div class="form-group">
+                    <label for="email">Email address</label>
+                    <input type="email" class="form-control" [class.is-invalid]="email.invalid && formSubmitted" id="email" placeholder="Enter email" formControlName="email" maxlength="30">
+                    <div *ngIf="email.errors && email.hasError('required')" class="invalid-feedback">
+                      This field is required.
+                    </div>
+                    <div *ngIf="email.errors && email.hasError('email')" class="invalid-feedback">
+                      Please enter a valid email.
+                    </div>
+                  </div>
+  
+                  <div class="form-group">
+                    <label for="email">Password</label>
+                    <input type="{{ showPassword ? 'text' : 'password'}}" class="form-control" [class.is-invalid]="password.invalid && formSubmitted" id="password" placeholder="Enter password" formControlName="password" maxlength="30">
+                    <div *ngIf="password.errors && password.hasError('required')" class="invalid-feedback">
+                      This field is required.
+                    </div>
+                    <div *ngIf="password.errors && password.hasError('pattern')" class="invalid-feedback">
+                      Must contain at least one uppercase letter, one lowecase letter, one number and one special character.
+                    </div>
+                  </div>
+  
+                  <div class="form-group">
+                    <label for="email">Confirm password</label>
+                    <input type="{{ showPassword ? 'text' : 'password' }}" class="form-control" [class.is-invalid]="passwordConfirm.invalid && formSubmitted" id="passwordConfirm" placeholder="Confirm password" formControlName="passwordConfirm" maxlength="30">
+  
+                    <div *ngIf="passwordConfirm.errors && passwordConfirm.hasError('required')" class="invalid-feedback">
+                      This field is required.
+                    </div>
+                    <div *ngIf="passwordConfirm.errors && passwordConfirm.hasError('notMatching')" class="invalid-feedback">
+                      Password not matching.
+                    </div>
+                  </div>
+  
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="showPasswordCheck" (change)="changeShowPassword()">
+                    <label class="form-check-label" for="showPasswordCheck">
+                      Show password
+                    </label>
+                  </div>
+  
+  
+    
+                </div>
+  
+                <div class="card-footer clearfix">
+                  <button type="submit" class="btn btn-primary float-right"><i class="fas fa-save mr-1"></i> Save</button>
+                </div>
+              </form>
+  
+            </div>
+          </div>
+  
+          <div class="col-md-6 col-sm-12">
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">
+                  <i class="fa fa-user mr-1"></i>
+                  User List
+                </h3>
+              </div>
+              <div class="card-body">
+                <app-user-list></app-user-list>
+              </div>
               <div class="card-footer clearfix">
-                <button type="submit" class="btn btn-primary float-right"><i class="fas fa-save mr-1"></i> Save</button>
+                <p>Users will be stored in a user-service and passed to the user-list component via an Observable.</p>
               </div>
-            </form>
-
+            </div>
+            
           </div>
         </div>
 
