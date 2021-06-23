@@ -3,3 +3,7 @@
 .overflow-hidden{
     overflow: hidden;
 }
+
+.col-md-6{
+    padding-left: 0px !important;
+}

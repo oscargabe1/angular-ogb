@@ -1,1 +1,94 @@
-<p>forms works!</p>
+<div class="content-wrapper">
+
+    <div class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1 class="m-0">Forms</h1>
+          </div>
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a [routerLink]="['/dashboard/first']">Home</a></li>
+              <li class="breadcrumb-item active">Pipes</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </div>
+      
+    <section class="content">
+      <div class="container-fluid">
+
+        <h5 class="mb-3">Reactive Forms</h5>
+
+        <div class="col-md-6 col-sm-12">
+          <div class="card">
+            <div class="card-header">
+              <h3 class="card-title">
+                  <i *ngIf="icon" class="far fa-check-square mr-1"></i>
+                  Example Form
+              </h3>
+            </div>
+            <form method="post"
+                    autocomplete="off"
+                    [formGroup]="reactiveForm"
+                    (ngSubmit)="postForm()"
+                    (keydown.enter)="$event.preventDefault()">
+
+              <div class="card-body">
+
+                <div class="form-group">
+                  <label for="email">Email address</label>
+                  <input type="email" class="form-control" [class.is-invalid]="reactiveForm.get('email')?.invalid && formSubmitted" id="email" placeholder="Enter email" formControlName="email">
+                  <div *ngIf="reactiveForm.get('email').errors && reactiveForm.get('email').hasError('required')" class="invalid-feedback">
+                    This field is required.
+                  </div>
+                  <div *ngIf="reactiveForm.get('email').errors && reactiveForm.get('email').hasError('email')" class="invalid-feedback">
+                    Please enter a valid email.
+                  </div>
+                  
+                </div>
+
+                <div class="form-group">
+                  <label for="email">Password</label>
+                  <input type="password" class="form-control" [class.is-invalid]="reactiveForm.get('password')?.invalid && formSubmitted" id="password" placeholder="Enter password" formControlName="password">
+                  <div *ngIf="reactiveForm.get('password').errors && reactiveForm.get('password').hasError('required')" class="invalid-feedback">
+                    This field is required.
+                  </div>
+                  <div *ngIf="reactiveForm.get('password').errors && reactiveForm.get('password').hasError('pattern')" class="invalid-feedback">
+                    Must contain at least one uppercase letter, one lowecase letter, one number and one special character.
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="email">Confirm password</label>
+                  <input type="password" class="form-control" [class.is-invalid]="reactiveForm.get('passwordConfirm')?.invalid && formSubmitted" id="passwordConfirm" placeholder="Confirm password" formControlName="passwordConfirm">
+                  <div *ngIf="reactiveForm.get('passwordConfirm').errors && reactiveForm.get('passwordConfirm').hasError('required')" class="invalid-feedback">
+                    This field is required.
+                  </div>
+                  <div *ngIf="reactiveForm.get('passwordConfirm').errors && reactiveForm.get('passwordConfirm').hasError('notMatching')" class="invalid-feedback">
+                    Password not matching.
+                  </div>
+                </div>
+
+
+  
+              </div>
+
+              <div class="card-footer clearfix">
+                <button type="submit" class="btn btn-primary float-right"><i class="fas fa-save mr-1"></i> Save</button>
+              </div>
+            </form>
+
+          </div>
+        </div>
+
+        
+
+          
+  
+      </div>
+    </section>
+  
+    
+  </div>
