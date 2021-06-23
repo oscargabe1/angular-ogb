@@ -11,6 +11,7 @@ import { FirstComponent } from "./first/first.component";
 import { FormsComponent } from './forms/forms.component';
 import { PagesComponent } from './pages.component';
 import { PipesComponent } from './pipes/pipes.component';
+import { TablesComponent } from './tables/tables.component';
 
 
 
@@ -20,6 +21,7 @@ import { PipesComponent } from './pipes/pipes.component';
     PagesComponent,
     PipesComponent,
     FormsComponent,
+    TablesComponent,
   ],
   exports:[
     FirstComponent,

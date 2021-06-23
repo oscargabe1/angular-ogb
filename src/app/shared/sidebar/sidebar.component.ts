@@ -18,6 +18,11 @@ export class SidebarComponent implements OnInit {
       title: 'Pipes',
       link: 'pipes',
       icon: 'fab fa-pied-piper-alt'
+    },
+    {
+      title: 'Tables',
+      link: 'tables',
+      icon: 'fa fa-table'
     }
   ]
 

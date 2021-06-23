@@ -4,6 +4,7 @@ import { FirstComponent } from './first/first.component';
 import { FormsComponent } from './forms/forms.component';
 import { PagesComponent } from './pages.component';
 import { PipesComponent } from './pipes/pipes.component';
+import { TablesComponent } from './tables/tables.component';
 
 const routes: Routes = [
     {
@@ -12,7 +13,8 @@ const routes: Routes = [
             {path: '', component: FirstComponent},
             { path:'first', component: FirstComponent },
             { path:'forms', component: FormsComponent },
-            { path:'pipes', component: PipesComponent }
+            { path:'pipes', component: PipesComponent },
+            { path:'tables', component: TablesComponent }
         ]
        
     },
