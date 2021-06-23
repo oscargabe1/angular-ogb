@@ -18,14 +18,29 @@ export class FormsComponent implements OnInit {
     validators: this.matchingPassword('password','passwordConfirm')
   })
 
+  get email(){
+    return this.reactiveForm.get('email');
+  }
+  get password(){
+    return this.reactiveForm.get('password');
+  }
+  get passwordConfirm(){
+    return this.reactiveForm.get('passwordConfirm');
+  }
+
   formSubmitted:boolean = false;
   confirmValid:boolean = false; 
+  showPassword:boolean = false;
+  showPasswordConfirm:boolean = false;
 
   constructor(private fb: FormBuilder) { }
 
   ngOnInit() {
   }
 
+  changeShowPassword(){
+    this.showPassword = !this.showPassword;
+  }
   postForm(){
     this.formSubmitted = true;
     this.checkConfirmPassword();

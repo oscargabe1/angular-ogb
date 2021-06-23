@@ -7,3 +7,9 @@
 .col-md-6{
     padding-left: 0px !important;
 }
+
+.input-btn{
+    border: 1px;
+    border-color: lightgray;
+    border-style: solid solid solid solid;
+}
