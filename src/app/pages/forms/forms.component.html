@@ -39,63 +39,67 @@
                 <div class="card-body">
 
                   <div class="form-group">
-                    <label for="name">Name</label>
-                    <input type="text" class="form-control" [class.is-invalid]="name.invalid && formSubmitted" id="name" placeholder="Enter name" formControlName="name" maxlength="30">
-                    <div *ngIf="name.errors && name.hasError('required')" class="invalid-feedback">
-                      This field is required.
-                    </div>
-                    <div *ngIf="name.errors && name.hasError('minlength')" class="invalid-feedback">
-                      Must be at least 3 characters long.
-                    </div>
+                    <mat-form-field class="example-full-width col-12">
+                      <mat-label>Name</mat-label>
+                      <input type="text" matInput [class.is-invalid]="name.invalid && formSubmitted" id="name" placeholder="Enter name" formControlName="name" maxlength="30">
+                      <mat-error *ngIf="name.errors && name.hasError('required')" class="invalid-feedback">
+                        This field is required.
+                      </mat-error>
+                      <mat-error *ngIf="name.errors && name.hasError('minlength')" class="invalid-feedback">
+                        Must be at least 3 characters long.
+                      </mat-error>
+                    </mat-form-field>
+                  </div>
+  
+
+                  <div class="form-group">
+                    <mat-form-field class="example-full-width col-12">
+                      <mat-label>Email</mat-label>
+                      <input type="email" matInput [class.is-invalid]="email.invalid && formSubmitted" id="email" placeholder="Enter email" formControlName="email" maxlength="30">
+                      <mat-hint>Errors appear instantly!</mat-hint>
+                      <mat-error *ngIf="email.errors && email.hasError('email')">
+                        Please enter a valid email address.
+                      </mat-error>
+                      <mat-error *ngIf="email.errors && email.hasError('required')">
+                        This field is required.
+                      </mat-error>
+                    </mat-form-field>
                   </div>
   
                   <div class="form-group">
-                    <label for="email">Email address</label>
-                    <input type="email" class="form-control" [class.is-invalid]="email.invalid && formSubmitted" id="email" placeholder="Enter email" formControlName="email" maxlength="30">
-                    <div *ngIf="email.errors && email.hasError('required')" class="invalid-feedback">
-                      This field is required.
-                    </div>
-                    <div *ngIf="email.errors && email.hasError('email')" class="invalid-feedback">
-                      Please enter a valid email.
-                    </div>
+                    <mat-form-field class="example-full-width col-12">
+                      <mat-label>Password</mat-label>
+                      <input type="{{ showPassword ? 'text' : 'password'}}" matInput [class.is-invalid]="password.invalid && formSubmitted" id="password" placeholder="Enter password" formControlName="password" maxlength="30">
+                      <mat-error *ngIf="password.errors && password.hasError('required')" class="invalid-feedback">
+                        This field is required.
+                      </mat-error>
+                      <mat-error *ngIf="password.errors && password.hasError('pattern')" class="invalid-feedback">
+                        Must contain at least one uppercase letter, one lowecase letter, one number and one special character.
+                      </mat-error>
+                    </mat-form-field>
                   </div>
   
                   <div class="form-group">
-                    <label for="email">Password</label>
-                    <input type="{{ showPassword ? 'text' : 'password'}}" class="form-control" [class.is-invalid]="password.invalid && formSubmitted" id="password" placeholder="Enter password" formControlName="password" maxlength="30">
-                    <div *ngIf="password.errors && password.hasError('required')" class="invalid-feedback">
-                      This field is required.
-                    </div>
-                    <div *ngIf="password.errors && password.hasError('pattern')" class="invalid-feedback">
-                      Must contain at least one uppercase letter, one lowecase letter, one number and one special character.
-                    </div>
+                    <mat-form-field class="example-full-width col-12">
+                      <mat-label>Confirm Password</mat-label>
+                      <input type="{{ showPassword ? 'text' : 'password' }}" matInput [class.is-invalid]="passwordConfirm.invalid && formSubmitted" id="passwordConfirm" placeholder="Confirm password" formControlName="passwordConfirm" maxlength="30">
+                      <mat-error *ngIf="passwordConfirm.errors && passwordConfirm.hasError('required')" class="invalid-feedback">
+                        This field is required.
+                      </mat-error>
+                      <mat-error *ngIf="passwordConfirm.errors && passwordConfirm.hasError('notMatching')" class="invalid-feedback">
+                        Password not matching.
+                      </mat-error>
+                    </mat-form-field>
                   </div>
-  
-                  <div class="form-group">
-                    <label for="email">Confirm password</label>
-                    <input type="{{ showPassword ? 'text' : 'password' }}" class="form-control" [class.is-invalid]="passwordConfirm.invalid && formSubmitted" id="passwordConfirm" placeholder="Confirm password" formControlName="passwordConfirm" maxlength="30">
-  
-                    <div *ngIf="passwordConfirm.errors && passwordConfirm.hasError('required')" class="invalid-feedback">
-                      This field is required.
-                    </div>
-                    <div *ngIf="passwordConfirm.errors && passwordConfirm.hasError('notMatching')" class="invalid-feedback">
-                      Password not matching.
-                    </div>
-                  </div>
-  
-                  <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="showPasswordCheck" (change)="changeShowPassword()">
-                    <label class="form-check-label" for="showPasswordCheck">
-                      Show password
-                    </label>
-                  </div>
+
+                  <mat-checkbox (change)="changeShowPassword()" color="primary" class="example-margin">Show password</mat-checkbox>
   
   
     
                 </div>
   
                 <div class="card-footer clearfix">
-                  <button type="submit" class="btn btn-primary float-right"><i class="fas fa-save mr-1"></i> Save</button>
+                  <button type="submit" class="float-right" mat-flat-button color="primary">Save</button>
                 </div>
               </form>
   
