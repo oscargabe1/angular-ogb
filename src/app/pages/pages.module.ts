@@ -17,6 +17,10 @@ import { MatSliderModule } from "@angular/material/slider";
 import {MatInputModule} from '@angular/material/input';
 import {MatButtonModule} from '@angular/material/button';
 import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatTableModule} from '@angular/material/table';
+import { MatTableComponent } from './tables/mat-table/mat-table.component';
+import { DataTableComponent } from './tables/data-table/data-table.component';
+import { HttpClientModule } from '@angular/common/http';
 
 
 
@@ -28,6 +32,8 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
     PipesComponent,
     FormsComponent,
     TablesComponent,
+    MatTableComponent,
+    DataTableComponent,
   ],
   exports:[
     FirstComponent,
@@ -44,7 +50,9 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
     MatSliderModule,
     MatInputModule,
     MatButtonModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatTableModule,
+    HttpClientModule
   ]
 })
 export class PagesModule { }

@@ -21,8 +21,20 @@ export class SidebarComponent implements OnInit {
     },
     {
       title: 'Tables',
-      link: 'tables',
-      icon: 'fa fa-table'
+      link: null,
+      icon: 'fa fa-table',
+      children:[
+        {
+          title: 'Datatable',
+          link: 'tables',
+          icon: 'fa fa-table'
+        },
+        {
+          title: 'AngularMat Table',
+          link: 'matTables',
+          icon: 'fab fa-angular'
+        },
+    ]
     }
   ]
 

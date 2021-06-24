@@ -26,12 +26,28 @@
        
           <li class="nav-header">ANGULAR TOOLS</li>
           <li *ngFor='let tab of tabs' class="nav-item">
-            <a class="nav-link" routerLinkActive="active" [routerLink]="[tab.link]">
+            <a class="nav-link" routerLinkActive="active" *ngIf="tab.link" [routerLink]="[tab.link]">
               <i class="nav-icon {{tab.icon}}"></i>
               <p>
                 {{tab.title}}
               </p>
             </a>
+            <a class="nav-link" routerLinkActive="active" *ngIf="!tab.link">
+              <i class="nav-icon {{tab.icon}}"></i>
+              <p>
+                {{tab.title}}
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+
+            <ul *ngIf="tab.children" class="nav nav-treeview">
+              <li *ngFor="let child of tab.children" class="nav-item">
+                <a class="nav-link" routerLinkActive="active" [routerLink]="child.link">
+                  <i class="nav-icon {{child.icon}}"></i>
+                  <p>{{child.title}}</p>
+                </a>
+              </li>
+            </ul>
           </li>
          
         </ul>
