@@ -15,8 +15,8 @@ const routes: Routes = [
             { path:'first', component: FirstComponent },
             { path:'forms', component: FormsComponent },
             { path:'pipes', component: PipesComponent },
-            { path:'tables', component: DataTableComponent },
-            { path:'matTables', component: MatTableComponent }
+            { path:'tables/data', component: DataTableComponent },
+            { path:'tables/material', component: MatTableComponent }
         ]
        
     },

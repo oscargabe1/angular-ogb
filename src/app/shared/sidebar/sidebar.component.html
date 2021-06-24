@@ -26,13 +26,15 @@
        
           <li class="nav-header">ANGULAR TOOLS</li>
           <li *ngFor='let tab of tabs' class="nav-item">
-            <a class="nav-link" routerLinkActive="active" *ngIf="tab.link" [routerLink]="[tab.link]">
+            <a class="nav-link" routerLinkActive="active" *ngIf="!tab.children" [routerLink]="[tab.link]">
               <i class="nav-icon {{tab.icon}}"></i>
               <p>
                 {{tab.title}}
               </p>
             </a>
-            <a class="nav-link" routerLinkActive="active" *ngIf="!tab.link">
+
+            
+            <a class="nav-link" [class.active] = "this.router.url.includes(tab.link)" routerLinkActive="active" *ngIf="tab.children">
               <i class="nav-icon {{tab.icon}}"></i>
               <p>
                 {{tab.title}}
@@ -44,7 +46,8 @@
               <li *ngFor="let child of tab.children" class="nav-item">
                 <a class="nav-link" routerLinkActive="active" [routerLink]="child.link">
                   <i class="nav-icon {{child.icon}}"></i>
-                  <p>{{child.title}}</p>
+                  <p>{{child.title}}
+                  </p>
                 </a>
               </li>
             </ul>

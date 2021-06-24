@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-sidebar',
@@ -8,6 +10,7 @@ import { Router } from "@angular/router";
 })
 export class SidebarComponent implements OnInit {
 
+  activeUrl:string;
   tabs = [
     {
       title: 'Forms',
@@ -21,26 +24,39 @@ export class SidebarComponent implements OnInit {
     },
     {
       title: 'Tables',
-      link: null,
+      link: 'tables',
       icon: 'fa fa-table',
       children:[
         {
           title: 'Datatable',
-          link: 'tables',
+          link: 'tables/data',
           icon: 'fa fa-table'
         },
         {
           title: 'AngularMat Table',
-          link: 'matTables',
+          link: 'tables/material',
           icon: 'fab fa-angular'
         },
     ]
     }
   ]
 
-  constructor(private router:Router) { }
+  constructor(private router:Router, private activatedRoute: ActivatedRoute) {
+   }
+  
 
   ngOnInit() {
+    this.activeUrl = this.router.url;
+    this.getCurrent();
+  }
+
+  getCurrent(){
+    console.log(this.router.url);
+  }
+
+  activateParent(child){
+    console.log(child);
+    this.activateParent = child;
   }
 
 }
