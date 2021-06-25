@@ -37,7 +37,6 @@
                       (keydown.enter)="$event.preventDefault()">
   
                 <div class="card-body">
-
                   <div class="form-group">
                     <mat-form-field class="example-full-width col-12">
                       <mat-label>Name</mat-label>
@@ -56,11 +55,11 @@
                     <mat-form-field class="example-full-width col-12">
                       <mat-label>Email</mat-label>
                       <input type="email" matInput [class.is-invalid]="email.invalid && formSubmitted" id="email" placeholder="Enter email" formControlName="email" maxlength="30">
-                      <mat-hint>Errors appear instantly!</mat-hint>
-                      <mat-error *ngIf="email.errors && email.hasError('email')">
+                      <!-- <mat-hint>Errors appear instantly!</mat-hint> -->
+                      <mat-error *ngIf="email.errors && email.hasError('email')" class="invalid-feedback">
                         Please enter a valid email address.
                       </mat-error>
-                      <mat-error *ngIf="email.errors && email.hasError('required')">
+                      <mat-error *ngIf="email.errors && email.hasError('required')" class="invalid-feedback">
                         This field is required.
                       </mat-error>
                     </mat-form-field>
@@ -94,12 +93,49 @@
 
                   <mat-checkbox (change)="changeShowPassword()" color="primary" class="example-margin">Show password</mat-checkbox>
   
+                  <hr>
+
+                  <p>Additional Information</p>
+
+                  <div class="form-group">
+                    <mat-form-field class="example-full-width col-12">
+                      <mat-label>Message</mat-label>
+                      <textarea matInput placeholder="Your message..." formControlName="message" maxlength="100"></textarea>
+                    </mat-form-field>
+                  </div>
+
+                  <div formArrayName="phones">
+                    <div *ngFor="let phone of phonesForm.controls; let i = index" [formGroupName]="i">
+                      
+                      <div class="form-group">
+                          <mat-form-field class="example-full-width col-10">
+                            <input matInput placeholder="Phone number" type="text" formControlName="number">
+                          </mat-form-field>
+                            <button type="button" class="mt-2" mat-flat-button color="warn" (click)="deletePhone(i)">Delete</button>
+                      </div>
+  
+
+                    </div>
+
+                    <button type="button" mat-flat-button color="light" (click)="addPhone()">Add phone</button>
+
+                  </div>
+
+                  <hr>
+                  <br>
+
+                  <mat-checkbox formControlName="agree" color="primary" class="example-margin">I agree to terms of service.</mat-checkbox>
+                  <mat-error *ngIf="agree.hasError('required') && formSubmitted" class="invalid-feedback">
+                    We need you to agree to this.
+                  </mat-error>
+
+
   
     
                 </div>
   
                 <div class="card-footer clearfix">
-                  <button type="submit" class="float-right" mat-flat-button color="primary">Save</button>
+                  <button type="submit" [disabled]="reactiveForm.invalid" class="float-right" mat-flat-button color="primary">Save</button>
                 </div>
               </form>
   

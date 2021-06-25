@@ -94,6 +94,16 @@
             </app-content-card>
           </div>
 
+          <div class="col-md-4 col-sm-12">
+            <app-content-card [title]="'Async Pipe'" [icon]="'fas fa-caret-down'"
+                        [description]="'Waits for an async function to return a value and then assigns it to the tag with the pipe.'">
+              <ul>
+                <li ngNonBindable>{{ asyncValue | async }}</li>
+                <li>{{ asyncValue | async }}</li>
+              </ul>
+            </app-content-card>
+          </div>
+
         </div>
         <span><a href="https://angular.io/api?type=pipe" taget="_blank">More Pipes</a></span>
 

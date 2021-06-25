@@ -3,6 +3,20 @@
     <div class="user-info" *ngFor="let user of users; let last = last;">
         <h5>{{user.name}}</h5>
         <p class="text-muted">{{user.email}}</p>
+        <div *ngIf="user.message">
+            <span class="text-muted">Mensaje</span>
+            <p>{{user.message}}</p>
+        </div>
+        <div *ngIf="user.phones.length > 0" class="row">
+            <div class="col-2">
+                <span>Telefonos:</span>
+            </div>
+            <div class="col-10">
+                <ul>
+                    <li *ngFor="let phone of user.phones">{{phone.number}}</li>
+                </ul>
+            </div>
+        </div>
         <hr *ngIf="!last">
     </div>
 </div>

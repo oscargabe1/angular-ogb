@@ -44,7 +44,7 @@
 
             <ul *ngIf="tab.children" class="nav nav-treeview">
               <li *ngFor="let child of tab.children" class="nav-item">
-                <a class="nav-link" routerLinkActive="active" [routerLink]="child.link">
+                <a class="nav-link child" routerLinkActive="active" [routerLink]="child.link">
                   <i class="nav-icon {{child.icon}}"></i>
                   <p>{{child.title}}
                   </p>

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
 
 import { UserService } from "../../services/user.service";
 
@@ -16,7 +16,10 @@ export class FormsComponent implements OnInit {
     name:['',[Validators.required, Validators.minLength(3)]],
     email:['',[Validators.required, Validators.email]],
     password:['',[Validators.required, Validators.pattern("^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$")]],
-    passwordConfirm:['',{validators: [Validators.required],updateOn: 'submit'}],
+    passwordConfirm:['',[Validators.required]],
+    message: [''],
+    phones: this.fb.array([]),
+    agree: [false,[Validators.requiredTrue]]
   },{
     validators: this.matchingPassword('password','passwordConfirm')
   })
@@ -33,6 +36,12 @@ export class FormsComponent implements OnInit {
   get passwordConfirm(){
     return this.reactiveForm.get('passwordConfirm');
   }
+  get phonesForm(){
+    return this.reactiveForm.get('phones') as FormArray;
+  }
+  get agree(){
+    return this.reactiveForm.get('agree');
+  }
 
   formSubmitted:boolean = false;
   confirmValid:boolean = false; 
@@ -44,8 +53,23 @@ export class FormsComponent implements OnInit {
   ngOnInit() {
   }
 
+  addPhone(){
+    const phone = this.fb.group({
+      number: []
+    });
+
+    this.phonesForm.push(phone);
+  }
+
+  deletePhone(index){
+    this.phonesForm.removeAt(index);
+  }
+
   changeShowPassword(){
     this.showPassword = !this.showPassword;
+  }
+  showForm(){
+    console.log(this.reactiveForm);
   }
   postForm(){
     this.formSubmitted = true;
@@ -72,10 +96,6 @@ export class FormsComponent implements OnInit {
         )
       }
     })
-
-    
-
-
   }
 
   checkConfirmPassword(){
