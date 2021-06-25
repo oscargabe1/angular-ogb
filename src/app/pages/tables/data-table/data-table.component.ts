@@ -23,7 +23,6 @@ export class DataTableComponent implements OnInit {
       .subscribe( resp =>{
         this.employees = resp.employees;
         this.loading = false;
-        console.log(this.employees);
       });
   }
 
