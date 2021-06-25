@@ -28,7 +28,7 @@ export class SidebarComponent implements OnInit {
       icon: 'fa fa-table',
       children:[
         {
-          title: 'Datatable',
+          title: 'Regular Table',
           link: 'tables/data',
           icon: 'fa fa-table'
         },

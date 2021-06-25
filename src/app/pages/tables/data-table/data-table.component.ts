@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Employee } from 'src/app/models/employee';
+import { EmployeeService } from '../../../services/employee.service';
 
 @Component({
   selector: 'app-data-table',
@@ -7,9 +9,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DataTableComponent implements OnInit {
 
-  constructor() { }
+  employees:Employee[] = [];
+  loading = true
+
+  constructor(private employeeService: EmployeeService) { }
 
   ngOnInit() {
+    this.getEmployees();
+  }
+
+  getEmployees(){
+    this.employeeService.getEmployees()
+      .subscribe( resp =>{
+        this.employees = resp.employees;
+        this.loading = false;
+        console.log(this.employees);
+      });
   }
 
 }
