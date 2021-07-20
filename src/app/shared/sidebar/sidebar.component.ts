@@ -41,7 +41,7 @@ export class SidebarComponent implements OnInit {
     }
   ]
 
-  constructor(private router:Router, private activatedRoute: ActivatedRoute) {
+  constructor(public router:Router, private activatedRoute: ActivatedRoute) {
    }
   
 
