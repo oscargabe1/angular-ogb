@@ -21,6 +21,7 @@ import {MatTableModule} from '@angular/material/table';
 import { MatTableComponent } from './tables/mat-table/mat-table.component';
 import { DataTableComponent } from './tables/data-table/data-table.component';
 import { HttpClientModule } from '@angular/common/http';
+import { UserService } from '../services/user.service';
 
 
 
@@ -53,6 +54,9 @@ import { HttpClientModule } from '@angular/common/http';
     MatCheckboxModule,
     MatTableModule,
     HttpClientModule
+  ],
+  providers:[
+    UserService
   ]
 })
 export class PagesModule { }

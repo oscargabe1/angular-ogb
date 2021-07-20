@@ -108,7 +108,7 @@
                     <div *ngFor="let phone of phonesForm.controls; let i = index" [formGroupName]="i">
                       
                       <div class="form-group">
-                          <mat-form-field class="example-full-width col-10">
+                          <mat-form-field class="example-full-width col-md-10 col-xs-6">
                             <input matInput placeholder="Phone number" type="text" formControlName="number">
                           </mat-form-field>
                             <button type="button" class="mt-2" mat-flat-button color="warn" (click)="deletePhone(i)">Delete</button>
